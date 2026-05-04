@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant Customer
+    participant MobileApp
+    participant SupabaseAuth
+    participant BackendAPI
+
+    Customer->>MobileApp: Enter credentials
+    MobileApp->>SupabaseAuth: signInWithPassword(email, password)
+    SupabaseAuth->>BackendAPI: Validate credentials
+    BackendAPI-->>SupabaseAuth: Return session
+    SupabaseAuth-->>MobileApp: Session received
+    MobileApp->>MobileApp: Store session & update auth state
+    MobileApp-->>Customer: Redirect to home screen

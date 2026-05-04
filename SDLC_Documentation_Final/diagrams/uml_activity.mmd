@@ -1,0 +1,31 @@
+stateDiagram-v2
+    [*] --> OpenApp
+    OpenApp --> IsLoggedIn
+    
+    IsLoggedIn --> LoginSignup : No
+    LoginSignup --> Authenticate
+    Authenticate --> Home : Success
+    
+    IsLoggedIn --> Home : Yes
+    
+    Home --> BrowseProducts
+    BrowseProducts --> SelectCategory
+    SelectCategory --> ViewProductDetails
+    ViewProductDetails --> AddToCart : Yes
+    AddToCart --> UpdateCart
+    UpdateCart --> ContinueBrowsing
+    ContinueBrowsing --> ViewProductDetails
+    
+    ViewProductDetails --> ContinueBrowsing : No
+    
+    ContinueBrowsing --> ProceedToCheckout : Yes
+    ContinueBrowsing --> BrowseProducts : No
+    
+    ProceedToCheckout --> ReviewCart
+    ReviewCart --> EnterShipping
+    EnterShipping --> SelectPayment
+    SelectPayment --> ConfirmOrder
+    ConfirmOrder --> ProcessPayment
+    ProcessPayment --> CreateOrder
+    CreateOrder --> SendConfirmation
+    SendConfirmation --> [*]

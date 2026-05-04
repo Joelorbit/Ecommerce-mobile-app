@@ -1,0 +1,39 @@
+erDiagram
+    auth_users ||--o{ profiles : "1:1"
+    profiles ||--o{ orders : "1:many"
+    products ||--o{ orders : "many:many via JSONB"
+    
+    auth_users {
+        uuid id PK
+        string email
+        timestamp created_at
+    }
+    
+    profiles {
+        uuid id PK,FK
+        string email
+        string full_name
+        string avatar_url
+        string role "user|admin"
+        string address
+        timestamp created_at
+    }
+    
+    products {
+        bigint id PK
+        string name
+        string description
+        string image
+        decimal price
+        string category
+        timestamp created_at
+    }
+    
+    orders {
+        uuid id PK
+        uuid user_id FK
+        jsonb items
+        decimal total_price
+        string status "open|ongoing|delivered"
+        timestamp created_at
+    }

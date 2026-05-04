@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant Customer
+    participant MobileApp
+    participant BackendAPI
+    participant SupabaseDB
+
+    Customer->>MobileApp: Add to cart
+    MobileApp->>MobileApp: Update cart state
+    
+    Customer->>MobileApp: Proceed to checkout
+    MobileApp->>MobileApp: Navigate to checkout screen
+    
+    Customer->>MobileApp: Confirm order
+    MobileApp->>BackendAPI: Create order
+    BackendAPI->>SupabaseDB: Insert order
+    SupabaseDB-->>BackendAPI: Order created
+    BackendAPI-->>MobileApp: Order confirmed
+    MobileApp-->>Customer: Show success message

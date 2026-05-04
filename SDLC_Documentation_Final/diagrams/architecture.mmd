@@ -1,0 +1,27 @@
+graph TB
+    subgraph "Presentation Layer"
+        A[Mobile App<br/>React Native/Expo]
+    end
+    
+    subgraph "Application Layer" 
+        B[Backend API<br/>Node.js/Express]
+    end
+    
+    subgraph "Data Layer"
+        C[Supabase<br/>PostgreSQL + Auth]
+        D[(Database)]
+        E[Authentication<br/>Service]
+        F[Real-time<br/>Subscriptions]
+        G[File Storage<br/>Images]
+    end
+    
+    A -->|HTTPS/REST<br/>Supabase Client| B
+    B -->|Supabase SDK| C
+    C --> D
+    C --> E
+    C --> F
+    C --> G
+    
+    style A fill:#e1f5fe
+    style B fill:#f3e5f5
+    style C fill:#e8f5e8

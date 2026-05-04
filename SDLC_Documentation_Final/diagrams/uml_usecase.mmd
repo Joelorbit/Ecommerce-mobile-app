@@ -1,0 +1,25 @@
+usecase "E-Commerce System" as System
+actor Customer
+actor Administrator
+
+Customer --> (Register/Login)
+Customer --> (Browse Products)
+Customer --> (Add to Cart)
+Customer --> (Manage Profile)
+Customer --> (View Orders)
+Customer --> (Checkout)
+
+Administrator --> (Login as Admin)
+Administrator --> (Manage Products)
+Administrator --> (View Users)
+Administrator --> (Manage Orders)
+
+note right of (Manage Products)
+  CRUD operations on
+  product catalog
+end note
+
+note right of (Manage Orders)
+  Update order status
+  View all orders
+end note
